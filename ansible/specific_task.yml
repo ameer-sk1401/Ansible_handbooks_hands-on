@@ -1,0 +1,7 @@
+---
+- name: "Usage of specific task from other playbook"
+  hosts: all
+  become: true
+  tasks:
+    - name: "Run specific task from other playbook"
+      ansible.builtin.import_tasks: setup_tasks.yml

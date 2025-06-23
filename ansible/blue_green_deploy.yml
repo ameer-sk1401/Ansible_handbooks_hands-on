@@ -1,0 +1,10 @@
+---
+- name: "Initiating Blue-Green Deployment"
+  hosts: all
+  become: true
+  tasks:
+    - name: "Create blue_green_deployment.txt file on the server"
+      ansible.builtin.file:
+        path: "/home/ubuntu/blue_green_deployment.txt"
+        state: touch
+        mode: '0644'

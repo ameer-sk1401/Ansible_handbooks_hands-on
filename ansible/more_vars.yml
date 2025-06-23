@@ -1,0 +1,23 @@
+---
+- name: "More examples on variables"
+  hosts: all
+  vars:
+    fruits:
+      apple: 0.5
+      banana: 0.6
+      cherry: 0.7
+
+  become: true
+  tasks:
+    - name: "Display fruit prices"
+      ansible.builtin.debug:
+        msg: "{{ fruits }}"
+    - name: "Display price of apple"
+      ansible.builtin.debug:
+        msg: "{{ fruits.apple }}"
+    - name: "Display vars from my-vars.yml"
+      ansible.builtin.debug:
+        var: var_from_my_vars
+    - name: "Display other_var from my-vars.yml"
+      ansible.builtin.debug:
+        var: other_var

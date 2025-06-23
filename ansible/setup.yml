@@ -1,0 +1,6 @@
+---
+- name: Setup apache in server and deploying a web page
+  hosts: all
+  become: true
+  roles:
+    - python

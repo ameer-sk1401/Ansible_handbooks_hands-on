@@ -1,0 +1,16 @@
+---
+- name: Setting up for some other yml file
+  ansible.builtin.file:
+    path: /home/ubuntu/ansible_file.txt
+    state: touch
+    mode: '0644'
+  tags:
+  - setup_file
+
+- name: Writing to the file content
+  ansible.builtin.copy:
+    dest: /home/ubuntu/ansible_file.txt
+    content: "This is a line written by Ansible"
+    mode: '0644'
+  tags:
+  - write_content

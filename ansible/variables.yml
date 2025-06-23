@@ -1,0 +1,19 @@
+---
+- name: "Installing Ngnix server"
+  hosts: all
+  vars:
+    serv_name: "nginx"
+  become: true
+  tasks:
+    - name: Install nginx package
+      ansible.builtin.apt:
+        name: "{{ serv_name }}"
+        state: present
+      when: ansible_facts['distribution'] == 'Ubuntu'
+
+    - name: Ensure nginx is running
+      ansible.builtin.service:
+        name: "{{ serv_name }}"
+        state: started
+        enabled: true
+      when: ansible_facts['distribution'] == 'CentOS'
